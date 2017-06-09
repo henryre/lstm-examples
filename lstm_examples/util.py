@@ -1,3 +1,17 @@
+import csv
+import numpy as np
+
+
+def read_data(fname):
+    with open(fname, 'r') as f:
+        text, y = [], []
+        reader = csv.reader(f, delimiter=',', quotechar='"')
+        for row in reader:
+            y.append(int(row[0]) - 1)
+            text.append(row[2])
+    return text, np.ravel(y)
+
+
 class SymbolTable:
     """Wrapper for dict to encode unknown symbols"""
 
